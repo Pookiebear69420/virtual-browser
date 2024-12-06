@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Browser</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 2rem; }
+        input { width: 70%; padding: 0.5rem; margin: 1rem; }
+        button { padding: 0.5rem 1rem; cursor: pointer; }
+        iframe { width: 90%; height: 600px; border: 1px solid #ddd; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <h1>Virtual Browser</h1>
+    <input id="url-input" type="text" placeholder="Enter a URL" />
+    <button onclick="loadPage()">Browse</button>
+    <iframe id="browser-frame" src=""></iframe>
+
+    <script>
+        const backendUrl = "https://your-backend-url.com/browse"; // Update with your backend URL
+        function loadPage() {
+            const url = document.getElementById("url-input").value;
+            if (!url.startsWith("http")) {
+                alert("Please enter a valid URL starting with http or https.");
+                return;
+            }
+            document.getElementById("browser-frame").src = `${backendUrl}?url=${encodeURIComponent(url)}`;
+        }
+    </script>
+</body>
+</html>
